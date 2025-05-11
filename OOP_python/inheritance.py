@@ -13,8 +13,11 @@ class Employee:
     def getFullName(self):
         return f"{self.first.capitalize() + ' ' + self.last.capitalize()} "
     
+    def apply_raise(self):
+        self.pay = int(self.pay * self.raise_amount)
+
     @classmethod
-    def apply_increment(cls, amount):
+    def update_increment(cls, amount):
         cls.raise_amount = amount
     
     @classmethod
@@ -30,8 +33,31 @@ class Employee:
     
 
 class Developer(Employee):
-    pass
+    raise_amount = 1.50
 
+    def __init__(self, first, last, pay, prog_lang):
+        super().__init__(first, last, pay)
+        self.prog_lang = prog_lang
+
+class Manager(Employee):
+    def __init__(self, first, last, pay, employees=None):
+        super().__init__(first, last, pay)
+        if employees == None:
+            self.employees = []
+        else:
+            self.employees = employees
+    
+    def add_emp(self, emp):
+        if emp not in self.employees:
+            self.employees.append(emp)
+    
+    def del_emp(self, emp):
+        if emp in self.employees:
+            self.employees.remove(emp)
+    
+    def print_emp_list(self):
+        for emp in self.employees:
+            print("-->", emp.first)
 
 # emp1 = Employee('sampath','periasamy',100000)
 # print(emp1.getFullName())
@@ -40,10 +66,16 @@ class Developer(Employee):
 # import datetime
 # print(Employee.is_workday(datetime.date(2025,5,9)))
 
-dev1 = Employee('sampath','periasamy',100000)
-print(dev1.getFullName())
-print(dev1.email)
+dev1 = Developer('sampath','periasamy',1000, 'java')
+dev2 = Developer('amit','sharma',2000, 'python')
 
+manager = Manager('Becky', 'Huber', 3000, [])
+print(manager.email)
 
-# print(help(Employee))
-print(help(Developer))
+manager.add_emp(dev1)
+manager.add_emp(dev2)
+manager.print_emp_list()
+
+manager.del_emp(dev1)
+print(manager.email)
+manager.print_emp_list()
