@@ -22,6 +22,13 @@ class Employee:
     def from_empstring(cls, empl_str):
         first, last, pay = empl_str.split('-')
         return cls(first, last, pay)
+    
+    # let's create a static class..a class that does not use any reference to "self" or "cls"
+    @staticmethod
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
 
 emp_1 = Employee('sampath','kumar',110000)
 emp_2 = Employee('Amit','Sharma',110000)
@@ -42,3 +49,7 @@ print(f"Current raise_amount: {emp_1.raise_amount}")
 new_employee = Employee.from_empstring('Elon-Musk-10')
 print(new_employee.getFullName())
 print(f"Total number of emps: {Employee.num_of_employees}")
+
+import datetime
+my_date = datetime.date(2016,7,8)
+print(Employee.is_workday(my_date))
