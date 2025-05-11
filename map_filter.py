@@ -35,3 +35,21 @@ print(sorted_list)
 
 # y = list(map(lambda item: item[1], items))
 # print(y)
+
+items = [
+    ('shampoo', 458),
+    ('phone', 458),
+    ('notebook', 459)
+]
+
+def sort_item(item):
+    return item[1]
+
+items.sort(key=sort_item)
+print(items)
+
+
+#using lambda function --> gets the same effect as above
+
+items.sort(key=lambda item: item[1])
+print(items)
