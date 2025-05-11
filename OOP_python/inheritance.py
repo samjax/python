@@ -70,12 +70,16 @@ dev1 = Developer('sampath','periasamy',1000, 'java')
 dev2 = Developer('amit','sharma',2000, 'python')
 
 manager = Manager('Becky', 'Huber', 3000, [])
-print(manager.email)
+# print(manager.email)
 
-manager.add_emp(dev1)
-manager.add_emp(dev2)
-manager.print_emp_list()
+# manager.add_emp(dev1)
+# manager.add_emp(dev2)
+# manager.print_emp_list()
 
-manager.del_emp(dev1)
-print(manager.email)
-manager.print_emp_list()
+# manager.del_emp(dev1)
+# print(manager.email)
+# manager.print_emp_list()
+
+print(f"Is dev1 a instance of Employee : {isinstance(dev1, Employee)}")
+print(f"Is Developer a subclass of Employee : {issubclass(Developer, Employee)}")
+print(f"Is Manager a subclass of Developer : {issubclass(Manager, Developer)}")
