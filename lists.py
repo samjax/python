@@ -27,4 +27,10 @@ letters = list('abcdef')
 for index, letter in enumerate(letters):
     print(index, letter)
 
+eletters = enumerate(letters)
 
+# letters.clear()
+print(eletters)
+
+for l in eletters:
+    print(l)
