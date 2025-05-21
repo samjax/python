@@ -34,3 +34,6 @@ print(eletters)
 
 for l in eletters:
     print(l)
+
+# adding this line to the code to simulate latest change
+print("this is a new line")
